@@ -1,0 +1,6 @@
+{
+  "apiUrl": "https://tu-api-ferromaderas.com",
+  "apiKey": "tu-api-key-secreta",
+  "folderPath": "C:\\Inventario",
+  "sync": false
+}
