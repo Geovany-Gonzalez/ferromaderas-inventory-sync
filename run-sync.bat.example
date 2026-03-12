@@ -1,0 +1,8 @@
+@echo off
+REM Copia este archivo a run-sync.bat y edita la API_KEY.
+REM run-sync.bat NO se sube a git (contiene la clave).
+
+set API_KEY=tu-clave-secreta-aqui
+
+REM El .exe lee API_KEY de la variable de entorno.
+ferromaderas-inventory-sync.exe

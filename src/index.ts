@@ -74,6 +74,8 @@ function loadConfig(): Config {
   return { apiUrl: '', apiKey: '', folderPath: '', sync: false };
 }
 
+// API_KEY: variable de entorno (recomendado) o config.json. Usar run-sync.bat para no guardarla en archivo.
+
 const config = loadConfig();
 const API_URL = (process.env.API_URL ?? config.apiUrl).trim();
 const API_KEY = (process.env.API_KEY ?? config.apiKey).trim();
@@ -204,7 +206,11 @@ async function main(): Promise<void> {
   log('--- Ferromaderas Inventory Sync ---');
 
   if (!API_URL || !API_KEY || !FOLDER_PATH) {
-    log('Configura config.json o variables de entorno: API_URL, API_KEY, FOLDER_PATH', 'error');
+    if (!API_KEY) {
+      log('API_KEY requerida. Usa run-sync.bat (variable de entorno) o apiKey en config.json', 'error');
+    } else {
+      log('Configura config.json: apiUrl, folderPath', 'error');
+    }
     closeLog();
     process.exit(1);
   }
